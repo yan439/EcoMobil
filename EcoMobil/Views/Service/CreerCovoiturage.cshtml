@@ -1,0 +1,167 @@
+﻿@*Houda*@
+
+@using static EcoMobil.Models.ManagementService.Vehicule
+
+@model EcoMobil.Models.ManagementService.Covoiturage
+
+@{
+    Layout = "_Layout";
+
+}
+<link rel="stylesheet" type="text/css" href="~/css/profil.css">
+
+
+<style>
+    .form-control1 {
+        display: block;
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #7A7D7F;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        text-align: center;
+        font-weight: normal;
+        font-size: 20px;
+        font-family: Arial, sans-serif;
+    }
+</style>
+
+
+<section class="page-section portfolio mt-5">
+    <div class="container">
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Formulaire de covoiturage</h2>
+    </div>
+    <br>
+
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7">
+
+
+            @using (Html.BeginForm())
+
+            {
+                <div class="form-floating mb-3">
+                    @Html.DropDownListFor(m => m.Vehicule.Marque, new SelectList(Enum.GetValues(typeof(MarqueType))),"---------------Choisir une marque--------------------", new {@class = "form-control1"})
+                    @Html.ValidationMessageFor(m => m.Vehicule.Marque)
+                </div>
+
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(m => m.Vehicule.Modele, new { @class = "form-control", placeholder = "Modèle" })
+                    @Html.LabelFor(m => m.Vehicule.Modele)
+                    @Html.ValidationMessageFor(m => m.Vehicule.Modele)
+                </div>
+
+                <div class="form-floating mb-3">
+                    <div class="row">
+                        <div class="column">
+                            @Html.LabelFor(m => m.Vehicule.Automatique  )
+                        </div>
+                        <div class="column">
+                            @Html.CheckBoxFor(m=>m.Vehicule.Automatique )
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <div class="form-floating mb-3">
+                    <div class="row">
+                        <div class="column">
+                            @Html.LabelFor(m => m.Vehicule.Electrique)
+                        </div>
+                        <div class="column">
+                            @Html.CheckBoxFor(m => m.Vehicule.Electrique)
+                            @Html.ValidationMessageFor(m => m.Vehicule.Electrique)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(m => m.Vehicule.nombreDePortes, new { @class = "form-control",  placeholder = "Nombre de portes"})
+                    @Html.LabelFor(m => m.Vehicule.nombreDePortes)
+                    @Html.ValidationMessageFor(m => m.Vehicule.nombreDePortes)
+                </div>
+
+
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(m => m.LieuDeDepart, new { @class = "form-control", placeholder = "Lieu de départ" })
+                    @Html.LabelFor(m => m.LieuDeDepart)
+                    @Html.ValidationMessageFor(m => m.LieuDeDepart)
+                </div>
+
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(m => m.DateDeDepart,"{0:yyyy-MM-dd HH:mm:ss}", new { @class = "form-control", id="myDate",type = "date"})
+                    @Html.LabelFor(m => m.DateDeDepart)
+                    @Html.ValidationMessageFor(m => m.DateDeDepart)
+                </div>
+
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(m => m.HeureDeDepart, new { @class = "form-control", placeholder = "Heure de départ 'HH:mm' " })
+                    @Html.LabelFor(m => m.HeureDeDepart)
+                    @Html.ValidationMessageFor(m => m.HeureDeDepart)
+                </div>
+
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(m => m.PlaceDisponible, new { @class = "form-control", placeholder = "Nombre de places disponibles" })
+                    @Html.LabelFor(m => m.PlaceDisponible)
+                    @Html.ValidationMessageFor(m => m.PlaceDisponible)
+                </div>
+
+                <div class="form-floating mb-3">
+
+                    @Html.TextBoxFor(m => m.LieuDArrivee, new { @class = "form-control", placeholder = "Lieu d'arrivée" })
+                    @Html.LabelFor(m => m.LieuDArrivee)
+                    @Html.ValidationMessageFor(m => m.LieuDArrivee)
+                </div>
+
+                <div class="form-floating mb-3">
+
+                    @Html.TextBoxFor(m => m.HeureDArrivee, new { @class = "form-control", placeholder = "Heure d'arrivée 'HH : mm'" })
+                    @Html.LabelFor(m => m.HeureDArrivee)
+                    @Html.ValidationMessageFor(m => m.HeureDArrivee)
+                </div>
+
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(m => m.Prix, new { @class = "form-control", placeholder = "Prix par place" })
+                    @Html.LabelFor(m => m.Prix)
+
+                    @Html.ValidationMessageFor(m => m.Prix)
+                </div>
+
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(m => m.Description,new { @class = "form-control", placeholder = "Description , conditions, informations supplémentaires" })
+                    @Html.LabelFor(m => m.Description)
+                    @Html.ValidationMessageFor(m => m.Description)
+                </div>
+
+                <div class="form-floating mb-3">
+                    @Html.ActionLink("j'ai lu et approuvée les conditions générales", "Conditions", "shared")
+                </div>
+
+
+                <button class="btn btn-primary btn-xl" type="submit">Valider</button>
+
+
+
+            }
+        </div>
+    </div>
+
+
+</section>
+
+
+
+
+
+
+

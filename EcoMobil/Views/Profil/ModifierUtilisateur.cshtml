@@ -1,0 +1,59 @@
+﻿@*Houda*@
+
+@model EcoMobil.Models.Personne.Utilisateur
+
+
+@{
+    Layout = "_Layout";
+   
+}
+
+<section class="page-section portfolio mt-5">
+
+        <div class="container">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Modifier mes informations</h2>
+            
+            </div>
+             <br>
+             <br>
+            <div class="row justify-content-center">
+             <div class="col-lg-8 col-xl-7">
+   
+     @using (Html.BeginForm())
+    {               <div class="form-floating mb-3">
+                         @Html.TextBoxFor(u => u.Nom, new { @class = "form-control", placeholder = "Nom" })  
+                         @Html.LabelFor(u => u.Nom)
+                         @Html.ValidationMessageFor(u => u.Nom)
+                    </div>
+                     <div class="form-floating mb-3">
+                         @Html.TextBoxFor(u => u.Prenom, new { @class = "form-control", placeholder = "Prénom" })  
+                         @Html.LabelFor(u => u.Prenom)
+                         @Html.ValidationMessageFor(u => u.Prenom)
+                    </div>
+                    
+                     <div class="form-floating mb-3">
+                         @Html.TextBoxFor(u => u.Telephone, new { @class = "form-control", placeholder = "Téléphone" })  
+                         @Html.LabelFor(u => u.Telephone)
+                         @Html.ValidationMessageFor(u => u.Telephone)
+                    </div>
+
+                     <div class="form-floating mb-3">
+                         @Html.TextBoxFor(u => u.Email, new { @class = "form-control", placeholder = "Email" })  
+                         @Html.LabelFor(u => u.Email)
+                         @Html.ValidationMessageFor(u => u.Email)
+                    </div>
+                     <div class="form-floating mb-3">
+                         @Html.TextBoxFor(u => u.MotDePasse, new { @class = "form-control", placeholder = "Mot de passe" })  
+                         @Html.LabelFor(u => u.MotDePasse)
+                         @Html.ValidationMessageFor(u => u.MotDePasse)
+                    </div>
+ 
+            
+                  
+           
+               <button class="btn btn-primary btn-xl" type="submit" >Valider</button>
+           
+           }
+            </div>
+  </div>
+    </section>

@@ -1,0 +1,143 @@
+﻿@*Hamid*@
+
+@model List<EcoMobil.Models.ManagementService.Colis>
+@{
+    Layout = "_Layout";
+}
+@*<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">*@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<h3 class="page-section-heading text-center text-uppercase text-secondary my-5">Livraisons de colis</h3>
+
+@using (Html.BeginForm("IndexColis", "Service", FormMethod.Get))
+{
+
+
+    <form>
+        <div class="row g-3 align-items-center my-4">
+            <div class=" col align-self-auto">
+                <input type="text" name="lieu_collecte" class="form-control" placeholder="Lieu de collecte" aria-label="Lieu de collecte" aria-describedby="basic-addon1">
+            </div>
+            <div class=" col align-self-auto">
+                <input type="text" name="lieu_livraisaon" class="form-control" placeholder="Lieu de livraison" aria-label="Lieu de livraison" aria-describedby="basic-addon1">
+            </div>
+            <div class=" col align-self-auto">
+                <input type="date" name="date_collecte" class="form-control" placeholder="Date de collecte" aria-label=" Date de collecte" aria-describedby="basic-addon1">
+            </div>
+
+            <div class=" col align-self-auto">
+                <button type="submit" value="Rechercher" class="btn btn-outline-info ">Rechercher</button>
+            </div>
+        </div>
+
+    </form>
+    @* <div>
+        <span>lieu depart</span>
+        <input type="text" name="lieu_depart"/>
+    </div>
+
+    <div>
+        <span>date depart</span>
+        <input type="date" name="date_depart"/>
+    </div>
+    <input type="submit" value="Rechercher"/>*@
+}
+<div classe class="row justify-content-start">
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th scope="col"><h5>Taille du colis</h5></th>
+                <th scope="col"><h5>Lieu de collecte</h5></th>
+                <th scope="col"><h5>Date de collecte</h5></th>
+                <th scope="col"><h5>Heure de collecte</h5></th>
+                <th scope="col"><h5>Lieu de livraison</h5></th>
+                <th scope="col"><h5>Prix</h5></th>
+                <th scope="col"><h5> Description</h5></th>
+                <th scope="col"><h5>Détail</h5></th>
+                <th scope="col"><h5> Réservation </h5></th>
+            </tr>
+
+        </thead>
+        @foreach (var colis in Model)
+        {
+            @*if (colis.Etat.Equals("Publié"))
+        {*@
+            @* string resaColink = "/Service/AjouterResaLocation";*@
+            @*string messagelink = "/Sejour/Supprimer/" + sejour.Id;*@
+
+            @* <td scope="row"><img src="@location.Vehicule.ImagePath" width="100" height="75" /></td>*@
+            <tr>
+                <td>@colis.TailleColis</td>
+                <td>@colis.LieuDeCollecte </td>
+                <td>@colis.DateDeCollecte.ToShortDateString()</td>
+                <td>@colis.HeureDeCollecte</td>
+                <td>@colis.LieuDeLivraison</td>
+                <td>@colis.Prix</td>
+                <td>@colis.Description</td>
+                <td>
+                    <div class="container mt-3">
+                        <button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#myModal">Détail</button>
+                    </div>
+                </td>
+
+                <!-- The Modal -->
+                <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Détail de la livraison</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+
+                                Nom : @colis.Utilisateur.Nom.ToUpper()
+                                <hr />
+                                Prénom : @colis.Utilisateur.Prenom
+                                <hr />
+
+                                Lieu de collecte : @colis.LieuDeCollecte
+                                <hr />
+                                Date de collecte : @colis.DateDeCollecte.ToShortDateString()
+                                <hr />
+                                Heure de dollecte : @colis.HeureDeCollecte
+                                <hr />
+                                Lieu de livraison : @colis.LieuDeLivraison
+                                <hr />
+                                Heure de livraison : @colis.HeureDeLivraison
+                                <hr />
+                                Prix : @colis.Prix €
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <td>@Html.ActionLink("Réserver", "ReserverService", "Service", new { Id = colis.Id })</td>
+            @*<td>@Html.ActionLink("Réserver", "ReserverService", "Service", new {  TypeService = "Location", Id = location.Id  })</td>*@
+            </tr>
+           
+
+
+
+            @*}*@
+        }
+    </table>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="col-4 m-5" style="width: 25rem;">
+            <a href="/Service/CreerLocation">
+                <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="black" class="align-middle bi bi-plus" viewBox="0 0 16 16">
+                    <path class="plus" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                </svg>
+            </a>
+        </div>
+    }
+</div>

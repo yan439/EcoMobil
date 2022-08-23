@@ -1,0 +1,87 @@
+﻿@*Houda*@
+
+@model EcoMobil.Models.ManagementService.Paie
+@{
+    
+    Layout = "_Layout";
+}
+
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Information pour le paiement</title>
+</head>
+<body>
+ <section class="page-section portfolio mt-5">
+
+        <div class="container">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Paiement CB</h2>
+            
+            </div>
+             <br>
+                    <br>
+            <div class="row justify-content-center">
+             <div class="col-lg-8 col-xl-7">
+   
+     @using (Html.BeginForm())
+    {        
+        @*<div class="form-floating mb-3">
+                       
+                      <input type="text" value="@Model.Don.Somme" readonly>
+                       @Html.LabelFor(m => m.Don.Somme)
+                       @Html.ValidationMessageFor(m => m.Don.Somme)
+                   </div>*@
+
+        <div class="form-floating mb-3">        
+                        @Html.TextBoxFor(m => m.TitulaireCarte , new { @class = "form-control", placeholder = "Titulaire de la carte" })
+                         @Html.LabelFor(m => m.TitulaireCarte)
+                          @Html.ValidationMessageFor(m => m.TitulaireCarte)
+
+        </div>
+         <br />
+             <div class="form-floating mb-3">
+                      @Html.DropDownListFor(m => m.DateExpirationMois, new[] { new SelectListItem { Text = "Janvier", Value = "01" }, new SelectListItem { Text = "Février", Value = "02" }, new SelectListItem { Text = "Mars", Value = "03" }, new SelectListItem { Text = "Avril", Value = "04" }, new SelectListItem { Text = "Mai", Value = "05" }, new SelectListItem { Text = "Juin", Value = "06" }, new SelectListItem { Text = "Juillet", Value = "07" }, new SelectListItem { Text = "Août", Value = "08" }, new SelectListItem { Text = "Septembre", Value = "09" }, new SelectListItem { Text = "Octobre", Value = "10" }, new SelectListItem { Text = "Novembre", Value = "11" }, new SelectListItem { Text = "Décembre", Value = "12" } })
+                       @Html.LabelFor(m => m.DateExpirationMois)
+                      
+                    </div>
+
+                     <br />
+             <div class="form-floating mb-3">  
+                     @Html.DropDownListFor(modelItem => modelItem.DateExpirationAnnee,  new[] {new SelectListItem { Text = "2022", Value = "2022" }, new SelectListItem { Text = "2023", Value = "2023" }, new SelectListItem { Text = "2024", Value = "2024" }, new SelectListItem { Text = "2025", Value = "2025" }, new SelectListItem { Text = "2026", Value = "2026" },new SelectListItem { Text = "2027", Value = "2027" }})
+                       @Html.LabelFor(m => m.DateExpirationAnnee)
+                       </div>
+
+                        <br />
+             <div class="form-floating mb-3">        
+                        @Html.TextBoxFor(m => m.NumeroCB , new { @class = "form-control", placeholder = "Numéro de la carte bancaire" })
+                         @Html.LabelFor(m => m.NumeroCB)
+                          @Html.ValidationMessageFor(m => m.NumeroCB)
+
+             </div>
+             <br />
+             <br />
+               <div class="form-floating mb-3">
+                        @Html.TextBoxFor(m => m.Crypto)
+                        @Html.LabelFor(m => m.Crypto)
+                        @Html.ValidationMessageFor(m => m.Crypto)
+             </div>
+             
+                       
+                       
+                    
+                  
+          
+                
+                <div class="button_orange">
+                    <input type="submit" value="Valider" />
+                </div>
+           
+       
+        
+  
+        }
+
+</body>
+</html>

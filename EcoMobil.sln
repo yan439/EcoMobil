@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EcoMobil", "EcoMobil\EcoMobil.csproj", "{351469D7-C559-4DFC-B976-7AD09E493AAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{351469D7-C559-4DFC-B976-7AD09E493AAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{351469D7-C559-4DFC-B976-7AD09E493AAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{351469D7-C559-4DFC-B976-7AD09E493AAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{351469D7-C559-4DFC-B976-7AD09E493AAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5730BCE2-27B4-4758-9199-2F3BC468CC70}
+	EndGlobalSection
+EndGlobal

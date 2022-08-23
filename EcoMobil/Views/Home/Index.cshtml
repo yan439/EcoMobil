@@ -1,0 +1,161 @@
+﻿@*Houda, Benjamin, Hamid*@
+
+@model EcoMobil.ViewModels.HomeViewModel
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+	<link rel="stylesheet" type="text/css" href="~/css/index.css">
+	
+<!-- Presentation Section-->	
+	<br>  <br>
+		<div class="row-presentation">
+              <div class="column-presentation left" >
+				  <br /><br>
+                 <img src="~/images/try.png" style="width:100%"/>
+    
+               </div>
+              <div class="column-presentation right">
+               <h6>Qui sommes-nous ?</h6>
+			   <br>
+              <p><span style="color:#0074af">Eco</span><span style="color:#ffc000">Mobil'</span> est une association à but non lucratif. Depuis 2020, avec les communautés locales pour protéger les écosystèmes.
+			  à l’initiative des stagiaires ISIKA, elle a pour but de promouvoir la citoyenneté et l’éco-citoyenneté, de développer des projets d’aménagement et de valorisation du patrimoine naturel et culturel local et d’agir en faveur du développement durable de son territoire.
+               Située dans la ville de Dax, ses actions rayonnent sur toute la Nouvelle-Aquitaine.</p>
+               </div>
+               </div>
+			  <br><br>  <br>
+<!-- divider Section-->
+
+		         
+<div class="divide"><br>
+    <br>
+</div>
+<br><br>  <br>
+
+<!-- Service Section-->
+  <h6>Nos Services</h6>
+  <br><br>
+		<div class ="row">
+				<div class="column"> <a href="/Service/IndexCovoiturage">  <img src="~/images/covoiturage.png" style="width:100%"/></a></div>
+				<div class="column"><a href="/Service/IndexLocation"> <img src="~/images/location.png" style="width:100%"/></a></div>
+				<div class="column"><a href="/Service/IndexColis"><img src="~/images/transport_colis.png" style="width:100%"/></a></div>
+		</div>
+		
+  <br><br>  <br><br>
+	<!-- divider Section-->	
+<br>
+        <div class="divide">
+	      <br>
+          <br>
+       </div>
+<br><br>  <br><br>
+
+<!-- Pub Section-->
+
+      @* <div class="content">
+             <div class="myBox"> <br>
+	               <div style="color :#1F618D; text-align:center; font-weight: bold;"> &hearts;   La force de mon don </div>
+	                     <hr style="width:100%; height:2px; color:yellow">
+                              <div style=" color : #1F618D; text-align: justify; margin : 25px">Par votre générosité, vous pouvez nous aider à poursuivre nos actions de protection de la nature et de l’environnement.</div>
+                                   <a href="http://www.google.com/">
+                                        <input class="button-1" type="button" value="Je donne en 2 min" />
+	                               </a>
+             </div>
+
+	  
+             <div class="myBox"> <br>
+	               <div style="color :#1F618D; text-align:center; font-weight: bold;">&#10059;   Je Deviens bénévole </div>
+	                     <hr style="width:100%; height:2px; color:yellow">
+                              <div style=" color : #1F618D; text-align: justify; margin : 25px">Vous souhaitez agir à nos cotés ? Découvrez comment vous engager dans une association du mouvement ! </div>
+                                   <a href="https://fne.asso.fr/">
+                                        <input class="button-2" type="button" value="En savoir plus" />
+	                               </a>
+             </div>
+
+
+            
+
+            <div class="myBox"> <br>
+				<div style="color :#1F618D;text-align:center; font-weight: bold;">&#10029;   Rapports d'activités </div>
+
+	                     <hr style="width:100%; height:2px; color:yellow">
+                              <div style=" color : #1F618D;  text-justify: auto;  margin : 25px">Acteurs du dialogue environnemental, nous agissons pour la défense de l’intérêt général. Association reconnue d’utilité publique, nous gérons nos fonds avec toute la rigueur que ce statut impose. </div>
+                                   <a href="https://fne.asso.fr/">
+                                        <input class="button-3" type="button" value="En savoir plus" />
+	                               </a>*@
+	<!-- divider Don et pub-->	
+<br>
+        <div class="divide">
+			<div class="content">
+			 <div class="myBox"> <br>
+	               <div style="color :#1F618D; text-align:center; font-weight: bold;"> &hearts;   La force de mon don </div>
+	                     <hr style="width:100%; height:2px; color:yellow">
+                              <div style=" color : #1F618D; text-align: justify; margin : 25px; font-weight: bold;">Par votre générosité, vous pouvez nous aider à poursuivre nos actions de protection de la nature et de l’environnement.</div>
+                                   <a href="/Don/FaireUnDon">
+                                        <input class="button-1" type="button" value="Je donne en 2 min" />
+	                               </a>
+ </div>
+								    <div class="myBox"> <br>
+	               <div style="color :#1F618D; text-align:center; font-weight: bold;">&#10059;   Je deviens bénévole </div>
+	                     <hr style="width:100%; height:2px; color:yellow">
+                              <div style=" color : #1F618D; text-align: justify; margin : 25px ; font-weight: bold;">Vous souhaitez agir à nos côtés ? Découvrez comment vous engager dans une association du mouvement !</div>
+                                   <a href="https://fne.asso.fr/">
+                                        <input class="button-2" type="button" value="En savoir plus" />
+	                               </a>
+								    </div>
+	      <div class="myBox"> <br>
+				<div style="color :#1F618D;text-align:center; font-weight: bold;">&#10029;   Rapports d'activités </div>
+	                     <hr style="width:100%; height:2px; color:yellow">
+                              <div style=" color : #1F618D;  text-justify: auto;  margin : 25px ; font-weight: bold;">Acteurs du dialogue environnemental, nous agissons pour la défense de l’intérêt général. Association reconnue d’utilité publique, nous gérons nos fonds avec toute la rigueur que ce statut impose.</div>
+                                   <a href="https://fne.asso.fr/">
+                                        <input class="button-3" type="button" value="En savoir plus" />
+	                               </a>
+            </div>
+	 </div>
+	  </div>
+<br><br>  
+
+ <br><br>  
+
+<br>
+        <div class="divide">
+	      <br>
+          <br>
+         </div>
+<br><br>  <br><br>
+
+
+<!-- Pub un service-->
+
+ <div class="divide">
+			<div class="content">
+			 <div class="myBox1"> <br>
+	               <div style="color :#1F618D; text-align:center; font-weight: bold;"> &hearts;   Proposer un service </div>
+	                     <hr style="width:100%; height:2px; color:yellow">
+                              <div style=" color : #1F618D; text-align: justify; margin : 25px; font-weight: bold;">Vous n’utilisez pas votre voiture tous les jours ? Vous faites des trajets quotidiens ? 
+								  Inscrivez votre voiture gratuitement, louez-la quand vous voulez et remboursez vos frais d’entretien. Partagez vos trajets domicile-travail sans changer vos habitudes et économisez jusqu'à 220 €* par mois. Le tout sans changer votre emploi du temps, ni votre itinéraire !
+							  </div>
+                                   <a href="/Service/Index">
+                                        <input class="button-4" type="button" value="Proposer" />
+   </a>
+
+ </div>	                            
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+			</div>
+  
+
+
+
+					

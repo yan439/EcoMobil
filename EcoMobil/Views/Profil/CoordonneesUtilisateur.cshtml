@@ -1,0 +1,68 @@
+﻿@*Houda*@
+
+@model List<EcoMobil.Models.Personne.Utilisateur>
+
+@{
+    Layout = "_layout";
+}
+<link rel="stylesheet" type="text/css" href="~/css/profil.css">
+
+
+
+
+ @foreach (var utilisateur in Model)
+        {
+			<br><br>
+  <h3 style="color : #1F618D; text-align : center "> Mes Coordonnées </h3>
+  <br><br>
+
+
+	<div class ="row">
+				<div class="column"> <b style="color : #1F618D ">Nom</b></div>
+				<div class="column"> <h6 style="text-align: center">@utilisateur.Nom</h6></div>
+				
+		</div>
+		<br>
+        <div class ="row">
+				<div class="column"> <b style="color : #1F618D ">Prénom</b></div>
+				<div class="column"> <h6 style="text-align: center">@utilisateur.Prenom</h6></div>
+				
+		</div>
+		<br>
+		<div class ="row">
+				<div class="column"> <b style="color : #1F618D" >Téléphone</b></div>
+				<div class="column"> <h6 style="text-align: center">@utilisateur.Telephone</h6></div>
+				
+		</div>
+		<br>
+		<div class ="row">
+				<div class="column"> <b style="color : #1F618D ">Email</b></div>
+				<div class="column"> <h6 style="text-align: center">@utilisateur.Email</h6></div>
+				
+		</div>
+		<br>
+		<div class ="row">
+				<div class="column"> <b style="color : #1F618D ">Mot de passe</b></div>
+				<div class="column"> <h6 style="text-align: center">*******</h6></div>
+				
+		</div>
+  
+ <br><br><br>
+  <div class ="row">
+				<div class="column" style="text-align: right"> 
+				
+				 <h6>&#x270E; @Html.ActionLink("Modifier", "ModifierUtilisateur", "Profil", new { id = @utilisateur.Id}, new { @class = "my-class" })</h6>
+				 </div>
+				<div class="column" style="text-align: center ;font-weight: bold">
+
+			    <h6 >&#9785; @Html.ActionLink("Supprimer", "SupprimerMonCompte", "Profil", new { id = @utilisateur.Id}, new { @class = "my-class1" })</h6></div>
+				
+
+			
+		</div>
+ 
+     
+
+          }
+
+

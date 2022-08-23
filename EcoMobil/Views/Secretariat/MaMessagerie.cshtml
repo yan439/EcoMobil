@@ -1,0 +1,264 @@
+﻿@*Yannick*@
+
+@model EcoMobil.ViewModels.SecretariatViewModel
+@{
+    Layout = "_layout";
+    ViewBag.Title = "Ma messagerie";
+}
+<link rel="stylesheet" type="text/css" href="~/css/profil.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+<style>
+    th {
+        cursor: pointer;
+    }
+
+    .scroll {
+        height: 50%;
+        overflow: auto;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #e4f2f7;
+    }
+    /*   tr:nth-child(even) {
+          background-color: #e4f2f7;
+        }*/
+</style>
+
+<section class="page-section portfolio mt-5">
+
+    <div class="container">
+        <h3 class="page-section-heading text-center text-uppercase text-secondary mb-0">Formulaire de contact</h3>
+    </div>
+    <br />
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7">
+            @using (Html.BeginForm("EnvoyerMessage", "Secretariat"))
+            {
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(m => m.Message.Destinataire, new { @class = "form-control", placeholder = "Destinataire", @Value = "test" })
+                    @Html.LabelFor(m => m.Message.Destinataire)
+                    @Html.ValidationMessageFor(m => m.Message.Destinataire)
+                </div>
+
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(m => m.Message.ObjetDuMessage, new { @class = "form-control", placeholder = "Objet" })
+                    @Html.LabelFor(m => m.Message.ObjetDuMessage)
+                    @Html.ValidationMessageFor(m => m.Message.ObjetDuMessage)
+                </div>
+
+                <div class="form-floating mb-3">
+                    @Html.TextAreaFor(m => m.Message.CorpsDuMessage, new { @class = "form-control", placeholder = "Message" })
+                    @Html.LabelFor(m => m.Message.CorpsDuMessage)
+                    @Html.ValidationMessageFor(m => m.Message.CorpsDuMessage)
+                </div>
+                <div class="button_orange">
+                    <button class="btn btn-primary btn-xl" type="submit">Envoyer le message</button>
+
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<br /><br />
+<b style="color : #1F618D; text-align : center" >Liste de mes messages :</b>
+<br /><br />
+@if (@Model.MessagesRecus.Count != 0)
+{
+    <b style="color : #1F618D; " >Messages reçus :</b>
+    <br /><br />
+    <div class="scroll">
+        <table id="myTable" class="table table-striped table-hover">
+            <tr>
+                <th onclick="sortTable(0)">Date</th>
+                <th onclick="sortTable(1)">Heure</th>
+                <th onclick="sortTable(2)">Expéditeur</th>
+                <th onclick="sortTable(3)">Objet</th>
+                <th onclick="sortTable(4)">Corps</th>
+
+            </tr>
+            @foreach (var message in Model.MessagesRecus)
+            {
+                if (!message.EtatCoteDestinataire.Equals("Supprimé"))
+                {
+                    <tr>
+                        <td>@message.Date</td>
+                        <td>@message.Heure</td>
+                        <td>@message.Utilisateur.Nom.ToUpper() @message.Utilisateur.Prenom</td>
+                        <td>@message.ObjetDuMessage</td>
+                        <td>@message.CorpsDuMessage</td>
+
+                        <td align="center">@Html.ActionLink("Répondre", "EnvoyerMessage", "Secretariat", new { IdDestinataire = message.UtilisateurId })</td>
+                        <td align="center"><a style=" color:#DF4848;">&#128465; @Html.ActionLink("Supprimer", "SupprimerMessage", "Secretariat", new { id = message.Id, EtatCoteExpediteur = message.EtatCoteExpediteur, EtatCoteDestinataire = "Supprimé" }, new { @class = "my-class1" }) </a></td>
+                     @*   <td>
+                            <div class="w3-container">
+                                <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Détails</button>
+
+                                <div id="id01" class="w3-modal">
+                                    <div class="w3-modal-content">
+                                        <div class="w3-container">
+                                            <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                                            <p>
+                                                <h3>Liste des passagers :</h3>
+                                                <div class="scroll">
+                                                    <table id="myTable" class="table table-striped  table-hover">
+                                                        <tr>
+                                                            <th onclick="sortTable(0)">Date de réservation</th>
+                                                            <th onclick="sortTable(1)">Nom</th>
+                                                            <th onclick="sortTable(2)">Prénom</th>
+                                                            <th onclick="sortTable(3)">Etat</th>
+                                                        </tr>
+                                                        @foreach (var reservation in Model.ReservationsConsommateurs.Where(rc => rc.CovoiturageId == covoiturage.Id))
+                                                        {
+                                                            <tr>
+                                                                <td>@reservation.Date</td>
+                                                                <td>@reservation.Utilisateur.Nom</td>
+                                                                <td>@reservation.Utilisateur.Prenom</td>
+                                                                <td>@reservation.Etat</td>
+                                                                <td>@Html.ActionLink("Accepter", "AccepterReservation", "Service", new { id = reservation.Id }) | @Html.ActionLink("Refuser", "RefuserReservation", "Service", new { id = reservation.Id })</td>
+                                                            </tr>
+                                                            @*}*@
+                    @*                                    }
+                                                    </table>
+                                                </div>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td align="center">@Html.ActionLink("Modifier", "ModifierCovoiturage", "Service", new { id = @covoiturage.Id })</td>*@
+                    </tr>
+                }
+            }
+       </table>
+    </div>
+}
+<br /><br />
+@if (@Model.MessagesEnvoyes.Count != 0)
+{
+    <b style="color : #1F618D; " >Messages envoyés :</b>
+    <br /><br />
+    <div class="scroll">
+        <table id="myTable" class="table table-striped table-hover">
+            <tr>
+                <th onclick="sortTable(0)">Date</th>
+                <th onclick="sortTable(1)">Heure</th>
+                <th onclick="sortTable(2)">Destinataire</th>
+                <th onclick="sortTable(3)">Objet</th>
+                <th onclick="sortTable(4)">Corps</th>
+            </tr>
+            @foreach (var message in Model.MessagesEnvoyes)
+            {
+                if (!message.EtatCoteExpediteur.Equals("Supprimé"))
+                {
+                    <tr>
+                        <td>@message.Date</td>
+                        <td>@message.Heure</td>
+                        <td>@message.Destinataire</td>
+                        <td>@message.ObjetDuMessage</td>
+                        <td>@message.CorpsDuMessage</td>
+                        <td align="center">@Html.ActionLink("Supprimer", "SupprimerMessage", "Secretariat", new { id = message.Id, EtatCoteExpediteur = "Supprimé", EtatCoteDestinataire = message.EtatCoteDestinataire })</td>
+                     @*   <td>
+                            <div class="w3-container">
+                                <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Détails</button>
+
+                                <div id="id01" class="w3-modal">
+                                    <div class="w3-modal-content">
+                                        <div class="w3-container">
+                                            <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                                            <p>
+                                                <h3>Liste des passagers :</h3>
+                                                <div class="scroll">
+                                                    <table id="myTable" class="table table-striped  table-hover">
+                                                        <tr>
+                                                            <th onclick="sortTable(0)">Date de réservation</th>
+                                                            <th onclick="sortTable(1)">Nom</th>
+                                                            <th onclick="sortTable(2)">Prénom</th>
+                                                            <th onclick="sortTable(3)">Etat</th>
+                                                        </tr>
+                                                        @foreach (var reservation in Model.ReservationsConsommateurs.Where(rc => rc.CovoiturageId == covoiturage.Id))
+                                                        {
+                                                            <tr>
+                                                                <td>@reservation.Date</td>
+                                                                <td>@reservation.Utilisateur.Nom</td>
+                                                                <td>@reservation.Utilisateur.Prenom</td>
+                                                                <td>@reservation.Etat</td>
+                                                                <td>@Html.ActionLink("Accepter", "AccepterReservation", "Service", new { id = reservation.Id }) | @Html.ActionLink("Refuser", "RefuserReservation", "Service", new { id = reservation.Id })</td>
+                                                            </tr>
+                                                            @*}*@
+                    @*                                    }
+                                                    </table>
+                                                </div>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td align="center">@Html.ActionLink("Modifier", "ModifierCovoiturage", "Service", new { id = @covoiturage.Id })</td>*@
+                    </tr>
+                }
+            }
+       </table>
+    </div>
+}
+
+<script>
+    function sortTable(n) {
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("myTable");
+        switching = true;
+        //Set the sorting direction to ascending:
+        dir = "asc";
+        /*Make a loop that will continue until
+        no switching has been done:*/
+        while (switching) {
+            //start by saying: no switching is done:
+            switching = false;
+            rows = table.rows;
+            /*Loop through all table rows (except the
+            first, which contains table headers):*/
+            for (i = 1; i < (rows.length - 1); i++) {
+                //start by saying there should be no switching:
+                shouldSwitch = false;
+                /*Get the two elements you want to compare,
+                one from current row and one from the next:*/
+                x = rows[i].getElementsByTagName("TD")[n];
+                y = rows[i + 1].getElementsByTagName("TD")[n];
+                /*check if the two rows should switch place,
+                based on the direction, asc or desc:*/
+                if (dir == "asc") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                /*If a switch has been marked, make the switch
+                and mark that a switch has been done:*/
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                //Each time a switch is done, increase this count by 1:
+                switchcount++;
+            } else {
+                /*If no switching has been done AND the direction is "asc",
+                set the direction to "desc" and run the while loop again.*/
+                if (switchcount == 0 && dir == "asc") {
+                    dir = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+</script>

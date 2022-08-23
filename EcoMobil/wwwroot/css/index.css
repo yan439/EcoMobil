@@ -1,0 +1,199 @@
+﻿.fade_rule {
+    height: 4px;
+    background-color: #F4D03F;
+    width: 90.0em;
+    margin: 0 auto;
+    background-image: linear-gradient(left, white 2%, #F4D03F 50%, white 98%);
+    background-image: -webkit-linear-gradient(left, white 2%, #1e49d6 50%, white 98%);
+}
+{
+    box-sizing: border-box;
+}
+
+/* Create two unequal columns that floats next to each other */
+.column-presentation {
+    float: left;
+    padding: 10px;
+    height: 200px; /* Should be removed. Only for demonstration */
+}
+
+.left {
+    width: 25%;
+}
+
+.right {
+    width: 75%;
+}
+
+/* Clear floats after the columns */
+.row-presentation:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+p {
+    color: #1F618D;
+    text-indent: 30px;
+    text-align: justify;
+    font-weight: bold;
+}
+h6 {
+    color: #1F618D;
+       text-indent: 30px;
+    text-align: center;
+    font-size: x-large;
+}
+.divide {
+    background-image: url("../images/try2.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    
+}
+.content {
+    display: flex;
+    justify-content: space-between;
+    max-width: available;
+    margin: 0 auto;
+    /*background-image: url("../images/donn.png");*/
+    padding: 40px 0;
+    border-radius: 25px;
+}
+
+.myBox {
+    width: 300px;
+    margin: 0 auto;
+    height: 350px;
+    background-color:rgba(255, 255, 255, 0.5);
+
+    border-radius: 25px;
+}
+.myBox1 {
+    width: 950px;
+    margin: 0 auto;
+    height: 250px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+}
+
+    .button-1 {
+        background: linear-gradient(to bottom right, #D9F4F7, #F3FA8A);
+        border: 0;
+        border-radius: 12px;
+        color: #3D9CDC;
+        cursor: pointer;
+        position: relative;
+        bottom: -50px;
+        right: -110px;
+        justify-content: flex-end;
+        font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 2.5;
+        outline: transparent;
+        padding: 0 1rem;
+        text-align: center;
+        text-decoration: none;
+        transition: box-shadow .2s ease-in-out;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        white-space: nowrap;
+    }
+
+    .button-1:not([disabled]):hover {
+        box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(243, 250, 138), .125rem .125rem 1rem rgba(243, 250, 138);
+    }
+
+.button-2 {
+    background: linear-gradient(to bottom right, #D9F4F7, #F3FA8A);
+    border: 0;
+    border-radius: 12px;
+    color: #3D9CDC;
+    cursor: pointer;
+    position: relative;
+    bottom: -50px;
+    right: -150px;
+    justify-content: flex-end;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 2.5;
+    outline: transparent;
+    padding: 0 1rem;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+}
+
+    .button-2:not([disabled]):hover {
+        box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(243, 250, 138), .125rem .125rem 1rem rgba(243, 250, 138);
+    }
+
+.button-3 {
+    background: linear-gradient(to bottom right, #D9F4F7, #F3FA8A);
+    border: 0;
+    border-radius: 12px;
+    color: #3D9CDC;
+    cursor: pointer;
+    position: relative;
+    bottom: 22px;
+    left: 150px;
+    justify-content: flex-end;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 2.5;
+    outline: transparent;
+    padding: 0 1rem;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+}
+
+    .button-3:not([disabled]):hover {
+        box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(243, 250, 138), .125rem .125rem 1rem rgba(243, 250, 138);
+    }
+
+
+div {
+    text-align: justify;
+    text-justify: auto;
+}
+.button-4 {
+    background: linear-gradient(to bottom right, #D9F4F7, #F3FA8A);
+    border: 0;
+    border-radius: 12px;
+    color: #3D9CDC;
+    cursor: pointer;
+    position: relative;
+    bottom: -6px;
+    left: 830px;
+    justify-content: flex-end;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 2.5;
+    outline: transparent;
+    padding: 0 1rem;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+}
+
+    .button-4:not([disabled]):hover {
+        box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(243, 250, 138), .125rem .125rem 1rem rgba(243, 250, 138);
+    }
+

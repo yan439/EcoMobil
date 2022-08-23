@@ -1,0 +1,34 @@
+﻿@*Houda*@
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+ 
+</head>
+<body>
+    <br> <br>
+
+     <div class ="row">
+				<div class="column"><img src="~/images/Erreur.png" style="width:100%"/></div>
+                <div class="column"> <h2>Oups !</h2> 
+                    <h3 style="color: #1F618D">La page que vous cherez semble introuvable</h3>
+                    <div style="color: #DF4848"><b> Code d'erreure : 404 </b></div>
+
+                       <br> 
+                    <div style="color: #1F618D"> <b>Voici quelques Liens utils à la place </b></div>
+                    <br>  
+                    <div ><b>@Html.ActionLink("Retourner à l'accueil", "Index", "Home")</b></div>
+                    <div > 
+                          <b> @Html.ActionLink("Nos Service", "IndexCovoiturage", "Service")</b></div>
+                    </div>
+
+</div>
+
+</body>
+</html>

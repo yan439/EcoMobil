@@ -1,0 +1,303 @@
+﻿@*Benjamin, Hamid*@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>EcoMobil'</title>
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <link href="~/css/my-added-style.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="~/images/logo.png">
+</head>
+<body id="page-top">
+
+    <div class="d-flex flex-column justify-content-between vh-100">
+
+        <div>
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+                <a href="/Home/Index">
+                <img src="~/images/logo.png" class="mx-auto d-block"/>
+                </a>
+                <div class="container">
+                    @{
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <a class="navbar-brand" href="#page-top">Bonjour @User.Identity.Name</a>
+
+                        }
+                        else
+                        {
+                            <a class="navbar-brand" href="#page-top">Bienvenue</a>
+                        }
+                    }
+
+
+
+                    <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-blue rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        Menu
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ms-auto">
+
+                            @{
+                                if (User.Identity.IsAuthenticated)
+                                {
+                                    if (User.IsInRole("Admin"))
+                                    {
+                                     
+                                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/Home/Index">Accueil</a></li>
+                                        <li class="nav-item mx-0 mx-lg-1 dropdown">
+                                            <a href="javascript:void(0)" class="nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle">Mon tableau de bord</a>
+                                            <div class="dropdown-content" >
+                                                @Html.ActionLink("Utilisateurs", "Index", "Secretariat")
+                                                @Html.ActionLink("Services", "IndexSecretariat", "Secretariat")
+                                            </div>
+                                            </li>
+                                        
+                                        <li class="nav-item mx-0 mx-lg-1 dropdown">
+                                            <a href="javascript:void(0)" class="nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle">Profil</a>
+                                            <div class="dropdown-content" >
+                                                
+                                                <a href="/Secretariat/MaMessagerie">Ma messagerie</a>
+                                                @Html.ActionLink("Se déconnecter", "Deconnexion", "Connexion")
+                                            </div>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/Home/Index">Accueil</a></li>
+                                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/Service/ListeCovoiturageContributeur">Mon tableau de bord</a></li>
+                                     
+                                        <li class="nav-item mx-0 mx-lg-1 dropdown">
+                                            <a href="javascript:void(0)" class="nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle">Profil</a>
+                                            <div class="dropdown-content" >
+                                                 @Html.ActionLink("Mes Coordonnées", "CoordonneesUtilisateur", "Profil")
+                                                <a href="/Secretariat/MaMessagerie">Ma messagerie</a>
+                                                @Html.ActionLink("Se déconnecter", "Deconnexion", "Connexion")
+                                            </div>
+                                        </li>
+                                    }
+                                }
+                                else
+                                {
+                                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Adhérer</a></li>
+                                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/Don/FaireUnDon">Faire un don</a></li>
+                                    <li class="nav-item mx-0 mx-lg-1 dropdown">
+                                        <a href="javascript:void(0)" class="nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle">Profil</a>
+                                        <div class="dropdown-content">
+                                            @Html.ActionLink("Se connecter", "IndexConnexion", "Connexion")
+                                            <a href="/Connexion/CreerCompte">Créer un compte</a>
+                                        </div>
+                                    </li>
+                                    
+                                }
+
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- MainSection Section-->
+            <section class="page-section mt-5">
+                <div class="container">
+                    @RenderBody()
+                </div>
+            </section>
+
+
+            <!-- Remove the container if you want to extend the Footer to full width. -->
+
+  <!-- Footer -->
+  <!-- Footer -->
+  <footer
+          class="text-center text-dark"
+          style="background-color: #ECEFF1"
+          >
+    <!-- Section: Social media -->
+    <section
+             class="d-flex justify-content-between p-4 text-white"
+             style="background-color: #1f74af"
+             >
+      <!-- Left -->
+      <div class="me-5">
+        <span>Réseaux sociaux:</span>
+      </div>
+      <!-- Left -->
+
+      <!-- Right -->
+   
+        <a href="" class="text-white me-4">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-google"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-3">
+        <!-- Grid row -->
+        <div class="row mt-3">
+         
+         
+
+          <!-- Grid column -->
+           <div class="col-md-4 col-lg-3 col-xl-4  mb-4">
+            <!-- Links -->
+             
+            <h6 class="text-uppercase fw-bold text-lg-start">Nos services</h6>
+            
+            <p>
+              <a href="/Service/IndexCovoiturage" class="text-dark">Covoiturage</a>
+            </p>
+          
+            <p>
+              <a href="/Service/IndexLocation" class="text-dark">livraison de véhicule</a>
+            </p>
+            <p>
+              <a href="/Service/IndexColis" class="text-dark">livraison de colis</a>
+            </p>
+          
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-4 col-xl-4  mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold  text-lg-start ">aides </h6>
+             <p> 
+              <a href="/images/covoiturage/CGU.pdf" target="_blank" class="text-dark">Conditions Générales d'Utilisation</a>
+           
+            </p>
+            <p>
+              <a href="/images/covoiturage/Les avantages .pdf" target="_blank" class="text-dark">Les avantages d'EcoMobil'</a>
+            </p>
+            <p>
+              <a href="/images/covoiturage/Charte.pdf" target="_blank" class="text-dark">Charte de bonne conduite</a>
+            </p>
+            
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+           <div class="col-md-4 col-lg-4 col-xl-4  mb">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold text-lg-start ">Contact</h6>
+           
+            <p><i class="fas fa-home mr-3"></i> Dax, 40100 ,Nouvelle-Aquitaine</p>
+            <p><i class="fas fa-envelope mr-3"></i> info@ecomobil.com</p>
+            <p><i class="fas fa-phone mr-3"></i> + 33 5 58 56 80 00</p>
+            
+          </div>
+          <!-- Grid column -->
+       
+     
+          <!-- Grid column -->
+      
+      
+      
+      </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div
+         class="text-center p-3"
+         style="background-color: #1f74af"
+         >  
+         © 2022 Copyright 
+         <span style="color:white">Eco</span><span style="color:#ffc000">Mobil'</span>
+   
+      
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+</div>
+<!-- End of .container -->
+     
+<!-- End of .container -->
+     
+            @*<footer class="footer text-center">
+                <div class="container">
+                    <div class="row">
+
+                      <a c href="/Connexion/IndexConnexionAdmin"><i class="fas fa-user-cog"></i>ESPACE ADMIN</a>
+
+                        <!-- Footer Location-->
+                        <div class="col-lg-4 mb-5 mb-lg-0">
+                            <h4 class="text-uppercase mb-4">Notre</h4>
+                            <p class="lead mb-0">
+                                Mairie de Dax
+                                <br />
+                                Rue Saint-Pierre
+                                <br />
+                                40100 Dax
+                            </p>
+                        </div>
+                        <!-- Footer Social Icons-->
+                        <div class="col-lg-4 mb-5 mb-lg-0">
+                            <h4 class="text-uppercase mb-4">Contactez nous</h4>
+                            <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fas fa-envelope"></i></a>
+                        </div>
+                        <!-- Footer About Text-->
+                        <div class="col-lg-4">
+                            <h4 class="text-uppercase mb-4">A propos de l'app EcoMobil'</h4>
+                            <p class="lead mb-0">
+                                Le thème Bootstrap de cette app, libre de droits, a été créé par <a href="http://startbootstrap.com">Start Bootstrap</a>
+                                .
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>*@
+            <!-- Copyright Section-->
+          @*  <div class="copyright py-4 text-center text-white">
+                <div class="container"><small>Copyright &copy; EcoMobil' 2022</small></div>
+            </div>*@
+    </div>
+  
+
+
+    
+    <script src="~/js/jquery-3.6.0.js"></script>
+    <script src="~/js/jquery.validate-vsdoc.js"></script>
+    <script src="~/js/jquery.validate.unobtrusive.js"></script>
+    <!-- Bootstrap core JS-->
+    <script src="~/js/bootstrap.bundle.js"></script>
+    <!-- Core theme JS-->
+    <script src="~/js/scripts.js"></script>
+    @RenderSection("Scripts", required:false)
+</body>
+</html>

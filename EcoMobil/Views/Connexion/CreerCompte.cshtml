@@ -1,0 +1,70 @@
+@*Houda*@
+
+@model EcoMobil.ViewModels.HomeViewModel
+@{
+    Layout = "_Layout";
+}
+
+@{
+
+    <section class="page-section portfolio mt-5">
+
+        <div class="container">
+            <h3 class="page-section-heading text-center text-uppercase text-secondary mb-0">Veuillez remplir ce formulaire pour créer votre compte</h3>
+            
+            </div>
+            <div class="row justify-content-center">
+             <div class="col-lg-8 col-xl-7">
+    @using (Html.BeginForm())
+    {
+
+           
+             <div class="form-floating mb-3">
+                       
+                       @Html.TextBoxFor(m => m.Utilisateur.Nom, new { @class = "form-control", placeholder = "Nom" })  
+                       @Html.LabelFor(m => m.Utilisateur.Nom)
+                       @Html.ValidationMessageFor(m => m.Utilisateur.Nom)
+                   </div>
+
+                    <div class="form-floating mb-3">
+                       
+                       @Html.TextBoxFor(m => m.Utilisateur.Prenom, new { @class = "form-control", placeholder = "Prénom" })  
+                       @Html.LabelFor(m => m.Utilisateur.Prenom)
+                       @Html.ValidationMessageFor(m => m.Utilisateur.Prenom)
+                   </div>
+
+                   <div class="form-floating mb-3">
+                       
+                       @Html.TextBoxFor(m => m.Utilisateur.Telephone, new { @class = "form-control", placeholder = "Numéro de Téléphone" })  
+                       @Html.LabelFor(m => m.Utilisateur.Telephone)
+                       @Html.ValidationMessageFor(m => m.Utilisateur.Telephone)
+                   </div>
+          
+                     <div class="form-floating mb-3">
+                       
+                       @Html.TextBoxFor(m => m.Utilisateur.Email, new { @class = "form-control", placeholder = "Email" })  
+                       @Html.LabelFor(m => m.Utilisateur.Email)
+                       @Html.ValidationMessageFor(m => m.Utilisateur.Email)
+                   </div>
+
+                    <div class="form-floating mb-3">
+                       @Html.PasswordFor(m => m.Utilisateur.MotDePasse, new { @class = "form-control", placeholder = "Mot de passe" })
+                       @Html.LabelFor(m => m.Utilisateur.MotDePasse)
+                       @Html.ValidationMessageFor(m => m.Utilisateur.MotDePasse)
+                   </div>
+                   
+                   <div class="button_orange">
+                        <button class="btn btn-primary btn-xl" type="submit" >Créér</button>
+                        
+                    </div>
+            
+         
+        
+
+
+
+    }
+       </div>
+    </section>
+}
+

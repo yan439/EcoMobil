@@ -1,0 +1,82 @@
+﻿@*Yannick*@
+
+@model EcoMobil.ViewModels.TresorerieViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<style>
+    .compte {
+      float: left;
+      padding: 30px; 
+    }
+</style>
+<section class="page-section portfolio mt-5">
+
+    <div class="container">
+        <h3 class="page-section-heading text-center text-uppercase text-secondary mb-0">Formulaire de paiement</h3>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7">
+            @using (Html.BeginForm("PayerService", "Tresorerie"))
+            {
+                <div class="compte">
+                <h3>Compte à débiter</h3>
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(m => m.CompteConsommateur.Utilisateur.Nom, new { @class = "form-control", placeholder = "Destinataire", @Value = "test", @readonly = true })
+                    @Html.LabelFor(m => m.CompteConsommateur.Utilisateur.Nom)
+                    @Html.ValidationMessageFor(m => m.CompteConsommateur.Utilisateur.Nom)
+                </div>
+
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(m => m.CompteConsommateur.IBAN, new { @class = "form-control", placeholder = "Objet" })
+                    @Html.LabelFor(m => m.CompteConsommateur.IBAN)
+                    @Html.ValidationMessageFor(m => m.CompteConsommateur.IBAN)
+                </div>
+
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(m => m.CompteConsommateur.Solde, new { @class = "form-control", placeholder = "Message" })
+                    @Html.LabelFor(m => m.CompteConsommateur.Solde)
+                    @Html.ValidationMessageFor(m => m.CompteConsommateur.Solde)
+                </div>
+                </div>
+                <div class="compte">
+                <h3>Compte à créditer</h3>
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(m => m.CompteContributeur.Utilisateur.Nom, new { @class = "form-control", placeholder = "Destinataire", @Value = "test", @readonly = true })
+                    @Html.LabelFor(m => m.CompteContributeur.Utilisateur.Nom)
+                    @Html.ValidationMessageFor(m => m.CompteContributeur.Utilisateur.Nom)
+                </div>
+
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(m => m.CompteContributeur.IBAN, new { @class = "form-control", placeholder = "Objet" })
+                    @Html.LabelFor(m => m.CompteContributeur.IBAN)
+                    @Html.ValidationMessageFor(m => m.CompteContributeur.IBAN)
+                </div>
+
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(m => m.CompteContributeur.Solde, new { @class = "form-control", placeholder = "Message" })
+                    @Html.LabelFor(m => m.CompteContributeur.Solde)
+                    @Html.ValidationMessageFor(m => m.CompteContributeur.Solde)
+                </div>
+                </div>
+
+                <div class="compte">
+                <h3>Prix à payer</h3>
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(m => m.CompteContributeur.Solde, new { @class = "form-control", placeholder = "Message" })
+                    @Html.LabelFor(m => m.CompteContributeur.Solde)
+                    @Html.ValidationMessageFor(m => m.CompteContributeur.Solde)
+                </div>
+                <div class="button_orange">
+                    <button class="btn btn-primary btn-xl" type="submit">Payer</button>
+
+                </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+

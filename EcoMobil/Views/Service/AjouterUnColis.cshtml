@@ -1,0 +1,122 @@
+﻿@*Houda*@
+
+@using static EcoMobil.Models.ManagementService.Colis
+
+@model EcoMobil.Models.ManagementService.Colis
+
+@{
+    Layout = "_Layout";
+   
+}
+<link rel="stylesheet" type="text/css" href="~/css/profil.css">
+
+
+<style>
+.form-control1 {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #7A7D7F;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  text-align : center;
+  font-weight: normal;
+   font-size: 20px;
+  font-family: Arial, sans-serif;
+}
+</style>
+<section class="page-section portfolio mt-5">
+
+        <div class="container">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Formulaire de livraison de colis</h2>
+            
+            </div>
+             <br>
+                    <br>
+            <div class="row justify-content-center">
+             <div class="col-lg-8 col-xl-7">
+   
+     @using (Html.BeginForm())
+
+
+    {       
+      
+     
+        
+        <div class="form-floating mb-3">
+                       @Html.DropDownListFor(m => m.TailleColis, new SelectList(Enum.GetValues(typeof(TypeColis))),"---------------Choisir la Taille--------------------", new {@class = "form-control1"})  
+                       @Html.ValidationMessageFor(m => m.TailleColis)
+             </div>
+ 
+             <div class="form-floating mb-3">
+                       @Html.TextBoxFor(m => m.LieuDeCollecte, new { @class = "form-control", placeholder = "Lieu De Collecte" })  
+                       @Html.LabelFor(m => m.LieuDeCollecte)
+                       @Html.ValidationMessageFor(m => m.LieuDeCollecte)
+            </div>
+
+
+
+            <div class="form-floating mb-3">
+                       @Html.TextBoxFor(m => m.DateDeCollecte, "{0:yyyy-MM-dd HH:mm:ss}", new { @class = "form-control", id="myDate",type = "date"})  
+                       @Html.LabelFor(m => m.DateDeCollecte)
+                       @Html.ValidationMessageFor(m => m.DateDeCollecte)
+            
+            </div>
+
+             <div class="form-floating mb-3">
+                       @Html.TextBoxFor(m => m.HeureDeCollecte, new { @class = "form-control", placeholder = "Heure De Collecte 'HH:MM" }) 
+                       @Html.LabelFor(m => m.HeureDeCollecte)
+                       @Html.ValidationMessageFor(m => m.HeureDeCollecte)
+            </div>
+
+
+
+            <div class="form-floating mb-3">
+                       @Html.TextBoxFor(m => m.HeureDeLivraison, new { @class = "form-control", placeholder = "Heure de livraison 'HH:mm' " })  
+                       @Html.LabelFor(m => m.HeureDeLivraison)
+                       @Html.ValidationMessageFor(m => m.HeureDeLivraison)
+            </div>
+                  
+            <div class="form-floating mb-3">
+                      @Html.TextBoxFor(m => m.Prix, new { @class = "form-control", placeholder = "Prix Par colis" })  
+                       @Html.LabelFor(m => m.Prix)
+                       @Html.ValidationMessageFor(m => m.Prix)
+            </div>
+
+             <div class="form-floating mb-3">  
+                      
+                         @Html.TextBoxFor(m => m.Poids, new { @class = "form-control", placeholder = "Poids maximum" })
+                         @Html.LabelFor(m => m.Poids)
+                         @Html.ValidationMessageFor(m => m.Poids)
+             </div>
+
+             <div class="form-floating mb-3">  
+                       
+                        @Html.TextBoxFor(m => m.Description, new { @class = "form-control", placeholder = "Description" })
+                        @Html.LabelFor(m => m.Description)
+                        @Html.ValidationMessageFor(m => m.Description)
+             </div>
+
+       
+
+            <div class="form-floating mb-3">  
+                         @Html.ActionLink("j'ai lu et approuvée les conditions générales", "Conditions", "shared")
+            </div>
+
+
+               <button class="btn btn-primary btn-xl" type="submit" >Valider</button>
+           
+           }
+            </div>
+            </div>
+          
+    </section>

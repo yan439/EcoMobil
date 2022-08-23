@@ -1,0 +1,54 @@
+﻿@*Yannick*@
+
+@model EcoMobil.ViewModels.SecretariatViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<section class="page-section portfolio mt-5">
+
+    <div class="container">
+        <h3 class="page-section-heading text-center text-uppercase text-secondary mb-0">Formulaire de contact :</h3>
+    </div>
+    <br />
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7">
+            @using (Html.BeginForm())
+            {
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(m => m.Message.Destinataire, new { @class = "form-control", placeholder = "Destinataire", @Value = "test", @readonly = true })
+                    @Html.LabelFor(m => m.Message.Destinataire)
+                    @Html.ValidationMessageFor(m => m.Message.Destinataire)
+                </div>
+
+                <div class="form-floating mb-3">
+                    @*@if (Model.Message.EtatCoteDestinataire.Equals("Réponse"))
+                    {
+                        @Html.TextBoxFor(m => m.Message.ObjetDuMessage, new { @class = "form-control", placeholder = "Objet", @Value = "test", @readonly = true })
+                    }
+                    else
+                    {*@
+                        @Html.TextBoxFor(m => m.Message.ObjetDuMessage, new { @class = "form-control", placeholder = "Objet" })
+                    @*}*@
+                    @Html.LabelFor(m => m.Message.ObjetDuMessage)
+                    @Html.ValidationMessageFor(m => m.Message.ObjetDuMessage)
+                </div>
+
+                <div class="form-floating mb-3">
+
+                    @Html.TextAreaFor(m => m.Message.CorpsDuMessage, new { @class = "form-control", placeholder = "Message" })
+                    @Html.LabelFor(m => m.Message.CorpsDuMessage)
+                    @Html.ValidationMessageFor(m => m.Message.CorpsDuMessage)
+                </div>
+
+                <div class="button_orange">
+                    <button class="btn btn-primary btn-xl" type="submit">Envoyer le message</button>
+
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+

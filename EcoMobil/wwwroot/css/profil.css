@@ -1,0 +1,23 @@
+﻿th {
+    cursor: pointer;
+}
+
+.scroll {
+    height: 50%;
+    overflow: auto;
+}
+
+tr:nth-child(odd) {
+    background-color: #e4f2f7;
+    text-align:  ;
+}
+a.my-class {
+    color: #1F618D;
+}
+
+a.my-class1 {
+    color: #DF4848;
+}
+
+
+
